@@ -16,7 +16,7 @@ function showButtons(topics, classToAdd, areaToAddTo) {
         $(areaToAddTo).append(newGif);
     }
 };
-//unable to load my api
+//unable to load my api - I don't know what happened. Maybe my key?
 $('#buttons').on('click', 'searchButton', function () {
     var type = $(this).data('type');
     var queryURL = 'http://api.giphy.com/v1/gifs/search?q=' + type + '&api_key=UrbJp6lpDIYtrprxGed4fAoO7qnRyrp4&limit=10';
@@ -52,11 +52,25 @@ $('#buttons').on('click', 'searchButton', function () {
 })
 
 
-
+//pushing searched buttons to list of buttons
 $('#search-button').on('click',function(){
     var newSearch = $('input').val().trim();
     topics.push(newSearch);
     showButtons(topics,'searchButton','#buttons');
     return false;
+    
+})
+
+
+//animations
+$(document).on('click', '.searchImage', function(){
+    var state = $(this.data('state'));
+    if (state == 'still') {
+        $('this').attr('src',$(this).data('animated'));
+        $('this').attr('data-state','animated');
+    } else {
+        $('this').attr('src',$(this).data('still'));
+        $('this').attr('data-state','still');
+    }
     
 })
