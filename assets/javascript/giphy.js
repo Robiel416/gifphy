@@ -2,9 +2,10 @@
 $(function () {
     showButtons(topics, 'searchButton', '#buttons');
 })
-
+//store preloaded buttons into an array
 var topics = ['ball', 'hat', 'chair', 'plane', 'shark', 'cartoon', 'water']
 
+//create function to load buttons
 function showButtons(topics, classToAdd, areaToAddTo) {
     $(areaToAddTo).empty();
     for (var i = 0; i < topics.length; i++) {
@@ -48,4 +49,14 @@ $('#buttons').on('click', 'searchButton', function () {
                 $('#favorites').append(divSearch);
             }
         })
+})
+
+
+
+$('#search-button').on('click',function(){
+    var newSearch = $('input').val().trim();
+    topics.push(newSearch);
+    showButtons(topics,'searchButton','#buttons');
+    return false;
+    
 })
