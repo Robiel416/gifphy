@@ -18,15 +18,15 @@ function showButtons(topics, classToAdd, areaToAddTo) {
 };
 //unable to load my api - I don't know what happened. Maybe my key?
 $('#buttons').on('click', 'searchButton', function () {
-    var type = $(this).data('type');
-    var queryURL = 'http://api.giphy.com/v1/gifs/search?q=' + type + '&api_key=UrbJp6lpDIYtrprxGed4fAoO7qnRyrp4&limit=10';
+    var type = $(this).data('data-name');
+    var queryURL = 'http://api.giphy.com/v1/gifs/search?q=' + type + '&api_key=dc6zaTOxFJmzC&limit=10';
 
     $.ajax({
         url: queryURL,
         method: 'GET'
     })
-        .then(function(response){
-
+        .done(function(response){
+            console.log(response);
             var results = response.data;
 
 
@@ -55,7 +55,12 @@ $('#buttons').on('click', 'searchButton', function () {
 //pushing searched buttons to list of buttons
 $('#search-button').on('click',function(){
     var newSearch = $('input').val().trim();
+    //not allowed to enter blank
+    if (newSearch == "") {
+        return false;  
+    }
     topics.push(newSearch);
+    
     showButtons(topics,'searchButton','#buttons');
     return false;
     
