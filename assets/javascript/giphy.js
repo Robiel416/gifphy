@@ -1,3 +1,4 @@
+//unable to access api with public key or my own api key
 
 $(function () {
     showButtons(topics, 'searchButton', '#buttons');
@@ -18,7 +19,7 @@ function showButtons(topics, classToAdd, areaToAddTo) {
 };
 //unable to load my api - I don't know what happened. Maybe my key?
 $('#buttons').on('click', 'searchButton', function () {
-    var type = $(this).data('data-type');
+    var type = $(this).attr('data-type');
     var queryURL = 'http://api.giphy.com/v1/gifs/search?q=' + type + '&api_key=dc6zaTOxFJmzC&limit=10';
 
     $.ajax({
@@ -69,7 +70,7 @@ $('#search-button').on('click',function(){
 
 //animations tested on hw file - unable to load api
 $(document).on('click', '.searchImage', function(){
-    var state = $(this).data('state');
+    var state = $(this).attr('state-state');
     if (state == 'still') {
         $('this').attr('src',$(this).data('animated'));
         $('this').attr('data-state','animated');
