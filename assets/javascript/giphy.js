@@ -17,9 +17,9 @@ function newButton(preloaded, classToAdd, areaToAddTo){
 }
 
 
-$(document).on('click','#submit',function(){
+$(document).on('click','#search-input',function(){
     var type = $(this).data('type');
-    var queryURL = 'https://api.giphy.com/v1/gifs/search?q=' + type +'&api_key=dc6zaTOxFJmzC&limit=10';
+    var queryURL = 'https://api.giphy.com/v1/gifs/search?q=' + type +'&api_key=UrbJp6lpDIYtrprxGed4fAoO7qnRyrp4&limit=10';
     //API call
     $.ajax({url:queryURL, method: 'GET'})
     .done(function(response){
